@@ -4,18 +4,22 @@ const userSchema = new mongoose.Schema({
     name: {
         type: String,
     },
-    avatar: {
+    price: {
         type: String,
     },
-    cloudinary_id: {
+    image: {
+        data: Buffer,
+        contentType: String
+    },
+    cloudinaryId: {
         type: String,
     },
-}, { timestamps: { createdAt: 'created_at', updatedAt: 'updated_at' }, versionKey: false });
+}, { timestamps: true, versionKey: false });
 
 userSchema.set('toJSON', {
     virtuals: true,
     transform: function (doc, ret) { delete ret._id }
 });
 
-
 module.exports = mongoose.model("product", userSchema);
+
