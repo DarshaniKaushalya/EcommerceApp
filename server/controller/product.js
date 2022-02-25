@@ -12,6 +12,8 @@ exports.create = async (req, res, next) => {
         const product = new Product({
             name: req.body.name,
             price: req.body.price,
+            description: req.body.description,
+            quantity: req.body.quantity,
             image: result.secure_url,
             cloudinaryId: result.public_id,
         });
@@ -57,6 +59,8 @@ exports.update = async (req, res, next) => {
         const data = {
             name: req.body.name || product.name,
             price: req.body.price || product.price,
+            description: req.body.description || product.description,
+            quantity: req.body.quantity || product.quantity,
             image: result.secure_url || product.image,
             cloudinaryId: result.public_id || product.cloudinaryId,
         };

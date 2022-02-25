@@ -7,6 +7,12 @@ const userSchema = new mongoose.Schema({
     price: {
         type: String,
     },
+    description: {
+        type: String
+    },
+    quantity: {
+        type: Number
+    },
     image: {
         data: Buffer,
         contentType: String
