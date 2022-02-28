@@ -6,7 +6,7 @@ const dotenv = require("dotenv");
 const connectDatabase = require('./server/database/database');
 dotenv.config();
 
-const productRouter = require('./server/routes/router');
+const routes = require('./server/routes/router');
 
 const PORT = process.env.PORT
 
@@ -23,6 +23,6 @@ app.use(morgan('tiny'));
 app.use(bodyparser.json({ extended: true }))
 
 //Route
-app.use('/products', productRouter);
+app.use('/', routes);
 
 app.listen(PORT, () => console.log('Server is running'))
