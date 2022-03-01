@@ -4,11 +4,14 @@ const upload = require("../middleware/multer");
 const Product = require('../model/productModel');
 const res = require("express/lib/response");
 
+/**
+ * Create products
+ */
 exports.create = async (req, res, next) => {
     try {
         const result = await cloudinary.uploader.upload(req.file.path)
 
-        //Create Product
+
         const product = new Product({
             name: req.body.name,
             price: req.body.price,
@@ -26,7 +29,10 @@ exports.create = async (req, res, next) => {
 
 };
 
-//return and retrive product/ retrive and return a single product
+/**
+ * Find products
+ * @params{String} id - The product id
+ */
 exports.find = async (req, res) => {
 
     if (req.params.id) {
@@ -50,7 +56,10 @@ exports.find = async (req, res) => {
         }
     }
 };
-
+/**
+ * Update products
+ * @params{String} id - The product id
+ */
 exports.update = async (req, res, next) => {
     try {
         let product = await Product.findById(req.params.id);
@@ -70,7 +79,10 @@ exports.update = async (req, res, next) => {
         console.log(err);
     }
 };
-
+/**
+ * Delete products 
+ * @params{String} id - The product id
+ */
 exports.delete = async (req, res) => {
     try {
         //Find product by id
