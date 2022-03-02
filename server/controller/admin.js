@@ -57,7 +57,7 @@ exports.signin = async (req, res) => {
                         user: { id, firstName, lastName, email, role, fullName }
                     });
                 } else {
-                    return res.status(400).jason({
+                    return res.status(400).json({
                         message: 'Invalid Password'
                     })
                 }
