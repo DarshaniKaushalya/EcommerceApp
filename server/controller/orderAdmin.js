@@ -1,4 +1,4 @@
-const Order = require("../model/newOrderModel");
+const Order = require("../model/orderModel");
 
 exports.updateOrder = (req, res) => {
     Order.updateOne(
@@ -14,11 +14,4 @@ exports.updateOrder = (req, res) => {
             res.status(201).json({ order });
         }
     });
-};
-
-exports.getCustomerOrders = async (req, res) => {
-    const orders = await Order.find({})
-        .populate("items.productId", "name")
-        .exec();
-    res.status(200).json({ orders });
 };
