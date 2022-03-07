@@ -8,6 +8,13 @@ dotenv.config();
 
 const routes = require('./server/routes/router');
 
+/*Local client connection*/
+// const mongoose = require('mongoose');
+// mongoose.connect("mongodb://localhost:27017/ecom", { useNewUrlParser: true, useUnifiedTopology: true }, (err) => {
+//     if (!err) console.log('db connected');
+//     else console.log('db error');
+// });
+
 const PORT = process.env.PORT
 
 //connectDB
