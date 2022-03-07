@@ -48,4 +48,5 @@ router.get('/order/:id', requireSignin, adminMiddleware, newOrderController.find
 //admin order status update
 router.post('/order/status', requireSignin, adminMiddleware, updateOrderController.updateOrder);
 
+
 module.exports = router;

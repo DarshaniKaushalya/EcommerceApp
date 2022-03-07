@@ -2,6 +2,7 @@ const { json } = require("express/lib/response");
 const newOrder = require("../model/orderModel");
 const Order = require("../model/cartModel");
 const findOrder = require('../model/orderModel');
+const nodemailer = require("nodemailer");
 
 
 
@@ -41,7 +42,45 @@ exports.addOrder = async (req, res) => {
                 order.save((error, order) => {
                     if (error) return res.status(400).json({ error });
                     if (order) {
+
+                        const totalAmount = order.totalAmount;
+                        const items = order.items;
+                        // const itemPrice = order.items.payablePrice;
+                        // const purchasedQty = order.items.purchasedQty;
+
                         res.status(201).json({ order });
+
+                        //order summary
+
+                        const transport = nodemailer.createTransport({
+                            host: process.env.MAIL_HOST,
+                            port: process.env.MAIL_PORT,
+                            auth: {
+                                user: process.env.MAIL_USER,
+                                pass: process.env.MAIL_PASS
+                            }
+                        })
+
+                        //remove await
+                        transport.sendMail({
+                            from: process.env.MAIL_FROM,
+                            to: "darshani@gapstars.net",
+                            subject: "Test Email",
+                            html: `<div className = "email" style="
+                                    border:1px soild black;
+                                    padding:20px;
+                                    font-family:sans-serif;
+                                    line-height:2;
+                                    font-size:20px;">
+
+                                    <h2>Order Summary</h2>
+                                    <p>Total Amount: ${totalAmount}</p>
+                                    <p>Item Details: ${items}</p>
+                        
+                                    <p><i>Thank you for your order!!!</i></p>
+                                    </div>`
+                        })
+
                     }
                 });
             }
@@ -147,6 +186,7 @@ exports.findOrder = async (req, res) => {
         try {
             const response = await findOrder.findById(id);
             res.send(response);
+
         } catch (err) {
             res.status(500).send({
                 message: err.message || "Some error occured while creating a create operation"
