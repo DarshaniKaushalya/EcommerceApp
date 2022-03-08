@@ -4,8 +4,6 @@ const Order = require("../model/cartModel");
 const findOrder = require('../model/orderModel');
 const nodemailer = require("nodemailer");
 
-
-
 /**
  * Add orders updation start
  */
@@ -45,12 +43,20 @@ exports.addOrder = async (req, res) => {
 
                         const totalAmount = order.totalAmount;
                         const items = order.items;
+
                         // const itemPrice = order.items.payablePrice;
                         // const purchasedQty = order.items.purchasedQty;
+
+                        // [{productId}]
+                        // sendOrderConfirmation(items);
 
                         res.status(201).json({ order });
 
                         //order summary
+
+                        // create emailService.js
+                        // create a function named = sendOrderConfirmation(orders)
+                        // orders 
 
                         const transport = nodemailer.createTransport({
                             host: process.env.MAIL_HOST,
@@ -61,7 +67,9 @@ exports.addOrder = async (req, res) => {
                             }
                         })
 
-                        //remove await
+                        // //remove await
+                        const itemsContent = getItemsDetails(items);
+
                         transport.sendMail({
                             from: process.env.MAIL_FROM,
                             to: "darshani@gapstars.net",
@@ -75,11 +83,23 @@ exports.addOrder = async (req, res) => {
 
                                     <h2>Order Summary</h2>
                                     <p>Total Amount: ${totalAmount}</p>
-                                    <p>Item Details: ${items}</p>
+                                    ${itemsContent}
                         
                                     <p><i>Thank you for your order!!!</i></p>
                                     </div>`
                         })
+
+                        function getItemsDetails(items) {
+                            // for loop
+                            let finalContent = '';
+                            items.forEach(item => {
+                                finalContent += `
+            <p>Item ID: ${item.productId}<br> Item payablePrice: ${item.payablePrice} <br> Item purchasedQty: ${item.purchasedQty}</p>
+        `;
+                            });
+                            // whatever iteration logic
+                            return finalContent;
+                        }
 
                     }
                 });

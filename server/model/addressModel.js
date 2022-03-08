@@ -4,10 +4,10 @@ const mongoose = require('mongoose');
 const addressSchema = new mongoose.Schema({
     name: {
         type: String,
-        required: true,
-        trim: true,
-        min: 3,
-        max: 50
+        //required: true,
+        // trim: true,
+        // min: 3,
+        // max: 50
     },
     mobileNumber: {
         type: number,

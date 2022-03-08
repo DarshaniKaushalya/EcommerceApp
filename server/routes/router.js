@@ -4,7 +4,7 @@ const productionController = require('../controller/product');
 const { requireSignin, buyerMiddleware, adminMiddleware } = require('../middleware');
 
 //Validations
-const { signupValidation, signinValidation } = require('../middleware/validationMiddleware');
+const { signupValidation, signinValidation, addressValidation } = require('../middleware/validationMiddleware');
 
 const orderController = require('../controller/cart');
 const userController = require('../controller/user');
@@ -32,7 +32,7 @@ router.post('/buyer/signin', signinValidation, userController.signin);
 router.post('/buyer/signup', signupValidation, userController.signup);
 
 //adding address to shipping,Billing
-router.post('/buyer/address', requireSignin, buyerMiddleware, addressController.addAddress);
+router.post('/buyer/address', requireSignin, buyerMiddleware, addressValidation, addressController.addAddress);
 
 //buyer place a order
 router.post('/order', requireSignin, buyerMiddleware, newOrderController.addOrder);

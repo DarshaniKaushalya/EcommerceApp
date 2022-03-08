@@ -14,15 +14,15 @@ const validationSchema = {
     }),
 
     address: joi.object({
-        name: joi.string().max(10).min(3),
-        mobileNumber: joi.number().max(10),
-        pinCode: joi.number().max(5),
-        locality: joi.string().max(10).min(3),
-        address: joi.string().max(10).min(3),
-        cityDistrictTown: joi.string().max(10).min(3),
-        landmark: joi.string(),
-        alternatePhone: joi.number().max(10),
-        addressType: joi.string()
+        name: joi.string().max(10).min(3).required(),
+        mobileNumber: joi.number().max(10).required(),
+        pinCode: joi.number().max(5).required(),
+        locality: joi.string().max(10).min(3).required(),
+        address: joi.string().max(10).min(3).required(),
+        cityDistrictTown: joi.string().max(10).min(3).required(),
+        landmark: joi.string().required(),
+        alternatePhone: joi.number().max(10).required(),
+        addressType: joi.string().required()
     })
 
 };
