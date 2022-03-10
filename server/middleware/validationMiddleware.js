@@ -28,19 +28,4 @@ module.exports = {
         }
     },
 
-    addressValidation: async (req, res, next) => {
-
-        //res.json({ message: 'address' })
-
-        const value = await address.validateAsync(req.body);
-        if (value.error) {
-            res.json({
-                success: 0,
-                message: value.error.details[0].message
-            })
-        } else {
-            next();
-        }
-    },
-
 };
