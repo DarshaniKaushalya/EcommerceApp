@@ -79,14 +79,14 @@ exports.addOrder = async (req, res) => {
                         })
 
                         function getItemsDetails(items) {
-                            // for loop
+                            // foreach loop
                             let finalContent = '';
                             items.forEach(item => {
                                 finalContent += `
             <p>Item ID: ${item.productId}<br> Item payablePrice: ${item.payablePrice} <br> Item purchasedQty: ${item.purchasedQty}</p>
         `;
                             });
-                            // whatever iteration logic
+
                             return finalContent;
                         }
 

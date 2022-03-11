@@ -9,8 +9,8 @@ chai.use(chaihttp);
 
 describe('Orders', () => {
     /*
-      * Test the /GET route for orders
-      */
+    * Test the /GET route for orders | with invalied route
+    */
 
     it('it should Not GET all the orders without correct route', (done) => {
         chai.request(server)

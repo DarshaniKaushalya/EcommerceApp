@@ -9,8 +9,8 @@ chai.use(chaihttp);
 
 describe('Product', () => {
     /*
-      * Test the /GET route for products
-      */
+    * Test the /GET route for products
+    */
     describe('/GET products', () => {
         it('it should GET all the products', (done) => {
             chai.request(server)
