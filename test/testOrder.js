@@ -9,12 +9,12 @@ chai.use(chaihttp);
 
 describe('Orders', () => {
     /*
-      * Test the /GET route
+      * Test the /GET route for orders
       */
 
     it('it should Not GET all the orders without correct route', (done) => {
         chai.request(server)
-            .get('/order')
+            .get('/orde')
             .end((err, res) => {
                 res.should.have.status(404);
                 done();

@@ -9,7 +9,7 @@ chai.use(chaihttp);
 
 describe('Address', () => {
     /*
-    * Test the /POST route
+    * Test the /POST route for add address
     */
     describe('/POST Address', () => {
         it('it should not POST a Address without correct route ', (done) => {

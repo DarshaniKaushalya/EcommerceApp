@@ -9,7 +9,7 @@ chai.use(chaihttp);
 
 describe('Product', () => {
     /*
-      * Test the /GET route
+      * Test the /GET route for products
       */
     describe('/GET products', () => {
         it('it should GET all the products', (done) => {
@@ -18,11 +18,12 @@ describe('Product', () => {
                 .end((err, res) => {
                     res.should.have.status(200);
                     res.body.should.be.a('array');
-                    // res.body.length.should.be.eql(2);
                     done();
                 });
         });
-
+        /*
+        * Test the /GET route for products || route is invalid
+        */
         it('it should Not GET all the products', (done) => {
             chai.request(server)
                 .get('/product')
@@ -34,7 +35,7 @@ describe('Product', () => {
     });
 
     /*
-    * Test the /GET/:id route
+    * Test the /GET/:id route || Get product by id
     */
     describe('/GET/:id product', () => {
         it('it should GET a product by the given id', (done) => {

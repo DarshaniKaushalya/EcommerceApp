@@ -8,7 +8,9 @@ chai.use(chaihttp);
 
 
 describe('OrderStatus', () => {
-
+    /*
+      * Test the /POST route for add order status || with invalied route
+      */
     it('it should Not POST order status:Check route', (done) => {
         chai.request(server)
             .post('/ord/status')
@@ -17,7 +19,9 @@ describe('OrderStatus', () => {
                 done();
             });
     });
-
+    /*
+    * Test the /POST route for add order status || with invalied route method
+    */
     it('it should Not POST order status:The method passing something went wrong', (done) => {
         chai.request(server)
             .get('/ord/status')
