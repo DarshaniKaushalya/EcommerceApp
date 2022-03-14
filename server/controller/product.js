@@ -40,7 +40,7 @@ exports.create = async (req, res, next) => {
 exports.find = async (req, res) => {
 
     if (req.params.id) {
-        const id = req.params.id;
+        const id = await req.params.id;
         try {
             const response = await Product.findById(id);
             res.send(response);
