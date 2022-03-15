@@ -9,14 +9,6 @@ dotenv.config();
 const routes = require('./server/routes/router');
 
 const cors = require("cors");
-// const nodemailer = require("nodemailer");
-
-/*Local client connection*/
-// const mongoose = require('mongoose');
-// mongoose.connect("mongodb://localhost:27017/ecom", { useNewUrlParser: true, useUnifiedTopology: true }, (err) => {
-//     if (!err) console.log('db connected');
-//     else console.log('db error');
-// });
 
 const PORT = process.env.PORT
 
@@ -35,9 +27,6 @@ app.use(bodyparser.json({ extended: true }))
 //Route
 app.use('/', routes);
 
-//send mails
-// app.use(cors());
-
-
-
 app.listen(PORT, () => console.log('Server is running'))
+
+module.exports = app

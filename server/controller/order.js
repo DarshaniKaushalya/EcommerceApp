@@ -44,20 +44,9 @@ exports.addOrder = async (req, res) => {
                         const totalAmount = order.totalAmount;
                         const items = order.items;
 
-                        // const itemPrice = order.items.payablePrice;
-                        // const purchasedQty = order.items.purchasedQty;
-
-                        // [{productId}]
-                        // sendOrderConfirmation(items);
-
                         res.status(201).json({ order });
 
                         //order summary
-
-                        // create emailService.js
-                        // create a function named = sendOrderConfirmation(orders)
-                        // orders 
-
                         const transport = nodemailer.createTransport({
                             host: process.env.MAIL_HOST,
                             port: process.env.MAIL_PORT,
@@ -67,7 +56,7 @@ exports.addOrder = async (req, res) => {
                             }
                         })
 
-                        // //remove await
+
                         const itemsContent = getItemsDetails(items);
 
                         transport.sendMail({
