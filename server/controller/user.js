@@ -48,14 +48,18 @@ exports.signin = async (req, res) => {
             if (error) return req.status(400).json({ error });
             if (user) {
                 if (user.authenticate(req.body.password)) {
-                    const token = jwt.sign({ _id: user._id }, process.env.JWT_SECRET, { expiresIn: '1h' });
-                    const { id, firstName, lastName, email, role, fullName } = user;//_id as id
+
+                    const token = jwt.sign({ _id: user._id, role: user.role }, process.env.JWT_SECRET, { expiresIn: '1h' });
+                    const { id, firstName, lastName, email, role, fullName } = user;
+
                     res.status(200).json({
                         token,
                         user: { id, firstName, lastName, email, role, fullName }
                     });
                 } else {
-                    return res.status(400).jason({
+
+                    return res.status(400).json({
+
                         message: 'Invalid Password'
                     })
                 }
@@ -72,3 +76,4 @@ exports.requireSignin = async (req, res, next) => {
     next();
 
 };
+
