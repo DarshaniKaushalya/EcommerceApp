@@ -9,7 +9,7 @@ chai.use(chaihttp);
 
 describe('Address', () => {
     /*
-    * Test the /POST route
+    * Test the /POST route for add address || invalied route
     */
     describe('/POST Address', () => {
         it('it should not POST a Address without correct route ', (done) => {
@@ -22,7 +22,10 @@ describe('Address', () => {
                 });
 
         });
-        it('it should not POST a Address with null route ', (done) => {
+        /*
+        * Test the /POST route for add address || empty route
+        */
+        it('it should not POST a Address with empty route ', (done) => {
 
             chai.request(server)
                 .post('')
