@@ -69,3 +69,17 @@ userSchema.methods = {
 
 module.exports = mongoose.model("user", userSchema);
 
+
+// const userSchema = new mongoose.Schema({
+//     name: {
+//         type: String,
+//     }
+// }, { timestamps: true, versionKey: false });
+
+// userSchema.set('toJSON', {
+//     virtuals: true,
+//     transform: function (doc, ret) { delete ret._id }
+// });
+
+// module.exports = mongoose.model("user", userSchema);
+
