@@ -2,6 +2,7 @@ const multer = require("multer");
 const path = require("path");
 
 //Multer config
+// HOw about renaming this to FileUploader
 module.exports = multer({
     storage: multer.diskStorage({
         destination: 'uploads',
