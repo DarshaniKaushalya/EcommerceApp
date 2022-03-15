@@ -1,8 +1,9 @@
 const mongoose = require('mongoose')
 
-const cartSchema = new mongoose.Schema({
+const orderSchema = new mongoose.Schema({
     user: { type: mongoose.Schema.Types.ObjectId, ref: 'user', required: true },
-    cartItems: [
+    orderItems: [
+
         {
             product: { type: mongoose.Schema.Types.ObjectId, ref: 'product', required: true },
             quantity: { type: Number, default: 1 },
@@ -13,10 +14,12 @@ const cartSchema = new mongoose.Schema({
 
 }, { timestamps: true, versionKey: false });
 
-cartSchema.set('toJSON', {
+
+orderSchema.set('toJSON', {
     virtuals: true,
     transform: function (doc, ret) { delete ret._id }
 });
 
-module.exports = mongoose.model("cart", cartSchema);
+module.exports = mongoose.model("cart", orderSchema);
+
 

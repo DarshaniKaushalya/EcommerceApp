@@ -1,74 +1,121 @@
-const createApplication = require('express/lib/express');
-const Order = require('../model/orderModel');
+const { json } = require("express/lib/response");
+const newOrder = require("../model/orderModel");
+const Order = require("../model/cartModel");
+const findOrder = require('../model/orderModel');
 
 
-/**
-  * Create Order  
-  */
-exports.create = async (req, res, next) => {
+exports.addOrder = (req, res) => {
 
-    Order.findOne({ user: req.user._id })
-        .exec((error, order) => {
-            if (error) return res.status(400).json({ error });
-            if (order) {
-                //if order already exists then update order by quatity
+    Order.deleteOne({ user: req.user._id }).exec((error, result) => {
+        if (error) return res.status(400).json({ error });
+        if (result) {
+            req.body.user = req.user._id;
+            req.body.orderStatus = [
+                {
+                    type: "ordered",
+                    date: new Date(),
+                    isCompleted: true,
 
-                const product = req.body.orderItems.product;
-                const item = order.orderItems.find(or => or.product == product);
+                },
+                {
+                    type: "packed",
+                    isCompleted: false,
 
-                if (item) {
-                    Order.findOneAndUpdate({ "user": req.user._id, "orderItems.product": product }, {
-                        "$set": {
-                            "orderItems.$": {
-                                ...req.body.orderItems,
-                                quantity: item.quantity + req.body.orderItems.quantity
-                            }
-                        }
-                    })
-                        .exec((error, _order) => {
-                            if (error) return res.status(400).json({ error });
-                            if (_order) {
-                                return res.status(201).json({ order: _order });
-                            }
-                        })
+                },
+                {
+                    type: "shipped",
+                    isCompleted: false,
 
+                },
+                {
+                    type: "delivered",
+                    isCompleted: false,
+
+                },
+            ];
+            const order = new newOrder(req.body);
+            order.save((error, order) => {
+                if (error) return res.status(400).json({ error });
+                if (order) {
+                    res.status(201).json({ order });
                 }
-                else {
-                    Order.findOneAndUpdate({ user: req.user._id }, {
-                        "$push": {
-                            "orderItems": req.body.orderItems
-                        }
-                    })
-                        .exec((error, _order) => {
-                            if (error) return res.status(400).json({ error });
-                            if (_order) {
-                                return res.status(201).json({ order: _order });
-                            }
-                        })
-
-                }
-
-
-
-                //res.status(200).json({ message: order });
-            } else {
-                //if order not exists then create  a new order
-                const order = new Order({
-                    user: req.user._id,
-                    orderItems: [req.body.orderItems]
-                });
-
-                order.save((error, order) => {
-                    if (error) return res.status(400).json({ error });
-                    if (order) {
-                        return res.status(201).json({ order });
-                    }
-                });
-            }
-        });
-
-
-
-    //res.json({ message: 'order' })
+            });
+        }
+    });
 };
 
+// exports.getOrders = (req, res) => {
+//     newOrder.find({ user: req.user._id })
+//         .select("_id paymentStatus items")
+//         .populate("items.productId", "_id name image")
+//         .exec((error, orders) => {
+//             if (error) return res.status(400).json({ error });
+//             if (orders) {
+//                 res.status(200).json({ orders });
+//             }
+//         });
+// };
+
+/**
+ * Find order as Buyer
+ * @params{String} id - The order id
+ */
+exports.getOrders = async (req, res) => {
+
+    if (req.params.id) {
+        const id = req.params.id;
+        try {
+            const response = await findOrder.findById(id);
+            res.send(response);
+        } catch (err) {
+            res.status(500).send({
+                message: err.message || "Some error occured while creating a create operation"
+            })
+        }
+    }
+}
+/**
+ * Find order
+ * @params{String} id - The order id
+ */
+exports.findOrder = async (req, res) => {
+
+    if (req.params.id) {
+        const id = req.params.id;
+        try {
+            const response = await findOrder.findById(id);
+            res.send(response);
+        } catch (err) {
+            res.status(500).send({
+                message: err.message || "Some error occured while creating a create operation"
+            })
+        }
+    } else {
+        try {
+            const response = await findOrder.find();
+            res.send(response);
+        } catch (err) {
+            res.status(500).send({
+                message: err.message || "Error Occurred while retriving product information"
+            })
+        }
+    }
+};
+
+/**
+ * Delete order
+ * @params{String} id - The order id
+ */
+exports.deleteOrder = async (req, res) => {
+    //res.json({ message: 'deleteorder' })
+    try {
+        //Find product by id
+        let findorder = await findOrder.findById(req.params.id);
+        //Delete product from db
+        await findorder.remove();
+        res.json(findorder);
+    } catch (err) {
+        console.log(err);
+    }
+
+};

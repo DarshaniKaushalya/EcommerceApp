@@ -3,11 +3,11 @@ const router = express.Router()
 const productionController = require('../controller/product');
 
 const { requireSignin, buyerMiddleware, adminMiddleware } = require('../middleware');
-const orderController = require('../controller/order');
+const orderController = require('../controller/cart');
 const userController = require('../controller/user');
 const adminController = require('../controller/admin');
 const addressController = require('../controller/address');
-const newOrderController = require('../controller/neworder');
+const newOrderController = require('../controller/order');
 const updateOrderController = require('../controller/orderAdmin');
 const upload = require("../middleware/multer");
 
@@ -32,33 +32,29 @@ router.post('/admin/signin', adminController.signin);
 router.post('/admin/signup', adminController.signup);
 
 
+//Buyer signinup & login
 router.post('/buyer/signin', userController.signin);
 router.post('/buyer/signup', userController.signup);
 
 //add to cart
-router.post('/order', requireSignin, buyerMiddleware, orderController.create);
+router.post('/cart', requireSignin, buyerMiddleware, orderController.create);
 
 //adding address to shipping,Billing
-router.post('/address', requireSignin, buyerMiddleware, addressController.addAddress);
+router.post('/buyer/address', requireSignin, buyerMiddleware, addressController.addAddress);
 
-//place a order
-router.post('/addorder', requireSignin, buyerMiddleware, newOrderController.addOrder);
-//get all orders
-router.get('/getorders', requireSignin, buyerMiddleware, newOrderController.getOrders);
-//delete Order
-router.delete('/deleteorder/:id', requireSignin, buyerMiddleware, newOrderController.deleteOrder);
-
-//get order as buyer not working
-// router.get('/getorder', requireSignin, buyerMiddleware, newOrderController.getOrder);
+//buyer place a order
+router.post('/order', requireSignin, buyerMiddleware, newOrderController.addOrder);
+//buyer get all orders
+router.get('/orders', requireSignin, buyerMiddleware, newOrderController.getOrders);
+//buyer delete Order
+router.delete('/order/:id', requireSignin, buyerMiddleware, newOrderController.deleteOrder);
 
 //admin view all orders
-router.get('/findorder', requireSignin, adminMiddleware, newOrderController.findOrder);
+router.get('/buyer/orders', requireSignin, adminMiddleware, newOrderController.findOrder);
 //admin view all orders by id
-router.get('/findorder/:id', requireSignin, adminMiddleware, newOrderController.findOrder);
-//admin view all orders
-router.get('/order/getcustomerorders', requireSignin, adminMiddleware, updateOrderController.getCustomerOrders);
-//order update || orderStatus update
-router.post('/order/update', requireSignin, adminMiddleware, updateOrderController.updateOrder);
+router.get('/order/:id', requireSignin, adminMiddleware, newOrderController.findOrder);
+//admin order status update
+router.post('/order/status', requireSignin, adminMiddleware, updateOrderController.updateOrder);
 
 // router.post('/user', userController.create);
 router.post('/signin', userController.signin);
