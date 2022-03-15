@@ -152,16 +152,23 @@ exports.addOrder = async (req, res) => {
 /**
  * Get orders
  */
-exports.getOrders = (req, res) => {
-    newOrder.find({ user: req.user._id })
-        .select("_id paymentStatus items")
-        .populate("items.productId", "_id name image")
-        .exec((error, orders) => {
-            if (error) return res.status(400).json({ error });
-            if (orders) {
-                res.status(200).json({ orders });
-            }
-        });
+exports.getOrders = async (req, res) => {
+
+    try {
+        await newOrder.find({ user: req.user._id })
+            .select("_id paymentStatus items")
+            .populate("items.productId", "_id name image")
+            .exec((error, orders) => {
+                if (error) return res.status(400).json({ error });
+                if (orders) {
+                    res.status(200).json({ orders });
+                }
+            });
+    }
+    catch (err) {
+        console.log(err);
+    }
+
 };
 
 /**
