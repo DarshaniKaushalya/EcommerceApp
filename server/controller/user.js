@@ -49,6 +49,7 @@ exports.signup = async (req, res) => {
 };
 
 exports.signin = async (req, res) => {
+
     try {
         await User.findOne({ email: req.body.email })
             .exec((error, user) => {
@@ -68,6 +69,7 @@ exports.signin = async (req, res) => {
                     }
                 } else {
                     return res.status(400).json({ message: 'Something went wrong' })
+
                 }
             });
     }
@@ -76,4 +78,6 @@ exports.signin = async (req, res) => {
     }
 
 }
+
+
 
