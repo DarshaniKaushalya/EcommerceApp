@@ -35,7 +35,6 @@ exports.signup = async (req, res) => {
                 }
                 if (data) {
                     return res.status(201).json({
-                        //user: data
                         message: 'Admin created Successfully'
                     })
                 }
@@ -53,7 +52,8 @@ exports.signin = async (req, res) => {
                 if (user.authenticate(req.body.password) && user.role === 'admin') {
                     const token = jwt.sign({ _id: user._id, role: user.role }, process.env.JWT_SECRET, { expiresIn: '1h' });
 
-                    const { id, firstName, lastName, email, role, fullName } = user;//_id as id
+                    const { id, firstName, lastName, email, role, fullName } = user;
+
                     res.status(200).json({
                         token,
                         user: { id, firstName, lastName, email, role, fullName }
@@ -66,7 +66,7 @@ exports.signin = async (req, res) => {
                     })
                 }
             } else {
-                return res.stsus(400).json({ message: 'Something went wrong' })
+                return res.status(400).json({ message: 'Something went wrong' })
             }
         });
 }

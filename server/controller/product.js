@@ -4,13 +4,15 @@ const upload = require("../middleware/multer");
 const Product = require('../model/productModel');
 const res = require("express/lib/response");
 
-/*
-* Create products
-*/
+/**
+ * Create products
+ */
+
 exports.create = async (req, res, next) => {
     try {
         const result = await cloudinary.uploader.upload(req.file.path)
 
+        // createProductValidation.validateAsync(req.body);
 
         const product = new Product({
             name: req.body.name,

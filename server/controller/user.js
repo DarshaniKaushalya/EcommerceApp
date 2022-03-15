@@ -23,7 +23,7 @@ exports.signup = async (req, res) => {
                 lastName,
                 email,
                 password,
-                username: Math.random().toString()
+                //username: Math.random().toString()
             });
 
             _user.save((error, data) => {
@@ -64,7 +64,7 @@ exports.signin = async (req, res) => {
                     })
                 }
             } else {
-                return res.stsus(400).json({ message: 'Something went wrong' })
+                return res.status(400).json({ message: 'Something went wrong' })
             }
         });
 }

@@ -1,15 +1,16 @@
+const number = require('@hapi/joi/lib/types/number');
 const mongoose = require('mongoose');
 
 const addressSchema = new mongoose.Schema({
     name: {
         type: String,
-        required: true,
-        trim: true,
-        min: 3,
-        max: 50
+        //required: true,
+        // trim: true,
+        // min: 3,
+        // max: 50
     },
     mobileNumber: {
-        type: String,
+        type: number,
         required: true,
         trim: true,
     },
@@ -17,6 +18,7 @@ const addressSchema = new mongoose.Schema({
         type: String,
         required: true,
         trim: true,
+        type: number
     },
     locality: {
         type: String,
@@ -55,7 +57,6 @@ const addressSchema = new mongoose.Schema({
         required: true,
         enum: ['home', 'work'],
         required: true,
-
     },
 
 });
@@ -67,6 +68,6 @@ const userAddressSchema = new mongoose.Schema({
         ref: 'user'
     },
     address: [addressSchema]
-}, { timestamps: true });
+}, { timestamps: true, versionKey: false });
 
 module.exports = mongoose.model('userAddress', userAddressSchema);
