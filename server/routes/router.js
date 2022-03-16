@@ -19,10 +19,6 @@ const upload = require("../middleware/multer");
 router.post('/cart', requireSignin, buyerMiddleware, orderController.create);
 //production routes
 const cartController = require('../controller/cart');
-const userController = require('../controller/user');
-const adminController = require('../controller/admin');
-
-const upload = require("../middleware/multer");
 
 router.post('/products', upload.single("image"), productionController.create);
 router.get('/products', productionController.find);
