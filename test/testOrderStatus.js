@@ -10,13 +10,14 @@ describe('/OrderStatus', async () => {
     try {
         await describe('/OrderStatus', () => {
             /*
-              * Test the /POST route for add order status || with invalied route
-              */
+            * Test the /POST route for add order status || with invalied route
+            */
             it('it should Not POST order status:Check route', (done) => {
                 chai.request(server)
                     .post('/ord/status')
                     .end((err, res) => {
                         res.should.have.status(404);
+                        // res.should.have.message("OrderStatus");
                         done();
                     });
             });
