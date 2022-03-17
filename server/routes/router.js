@@ -18,8 +18,8 @@ const upload = require("../middleware/multerMiddleware");
 
 //production routes
 router.post('/products', requireSignin, adminMiddleware, upload.single("image"), productionController.create);
-router.get('/products', requireSignin, adminMiddleware, productionController.find);
-router.get('/products/:id', requireSignin, adminMiddleware, productionController.find);
+router.get('/products', productionController.find);
+router.get('/products/:id', productionController.find);
 router.put('/products/:id', requireSignin, adminMiddleware, upload.single("image"), productionController.update);
 router.delete('/products/:id', requireSignin, adminMiddleware, productionController.delete);
 

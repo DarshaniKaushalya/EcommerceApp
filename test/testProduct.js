@@ -16,6 +16,7 @@ describe('Product', async () => {
             it('it should GET all the products', (done) => {
                 chai.request(server)
                     .get('/products')
+
                     .end((err, res) => {
                         res.should.have.status(200);
                         res.body.should.be.a('array');
