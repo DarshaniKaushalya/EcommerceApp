@@ -1,6 +1,6 @@
 const { json } = require("express/lib/response");
 const newOrder = require("../model/orderModel");
-const Order = require("../model/cartModel");
+const Order = require("../../TestFiles/cartModel");
 const findOrder = require('../model/orderModel');
 const nodemailer = require("nodemailer");
 
