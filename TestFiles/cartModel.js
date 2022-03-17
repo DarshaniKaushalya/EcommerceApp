@@ -20,6 +20,6 @@ orderSchema.set('toJSON', {
     transform: function (doc, ret) { delete ret._id }
 });
 
-module.exports = mongoose.model("cart", orderSchema);
+module.exports = mongoose.model("", orderSchema);
 
 
