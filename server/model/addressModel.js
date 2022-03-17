@@ -1,6 +1,9 @@
 const number = require('@hapi/joi/lib/types/number');
 const mongoose = require('mongoose');
 
+/**
+ * addressSchema
+ */
 const addressSchema = new mongoose.Schema({
     name: {
         type: String,
@@ -60,7 +63,9 @@ const addressSchema = new mongoose.Schema({
     },
 
 });
-
+/**
+ * userAddressSchema
+ */
 const userAddressSchema = new mongoose.Schema({
     user: {
         type: mongoose.Schema.Types.ObjectId,

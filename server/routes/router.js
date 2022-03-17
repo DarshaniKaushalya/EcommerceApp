@@ -5,8 +5,7 @@ const productionController = require('../controller/product');
 const { requireSignin, buyerMiddleware, adminMiddleware } = require('../middleware');
 //Validations
 const { signupValidation, signinValidation } = require('../middleware/validationMiddleware');
-
-const userController = require('../controller/user');
+const userController = require('../controller/buyer');
 const adminController = require('../controller/admin');
 const addressController = require('../controller/address');
 const newOrderController = require('../controller/order');
@@ -18,11 +17,11 @@ const upload = require("../middleware/multer");
  */
 
 //production routes
-router.post('/products', upload.single("image"), productionController.create);
-router.get('/products', productionController.find);
-router.get('/products/:id', productionController.find);
-router.put('/products/:id', upload.single("image"), productionController.update);
-router.delete('/products/:id', productionController.delete);
+router.post('/products', requireSignin, adminMiddleware, upload.single("image"), productionController.create);
+router.get('/products', requireSignin, adminMiddleware, productionController.find);
+router.get('/products/:id', requireSignin, adminMiddleware, productionController.find);
+router.put('/products/:id', requireSignin, adminMiddleware, upload.single("image"), productionController.update);
+router.delete('/products/:id', requireSignin, adminMiddleware, productionController.delete);
 
 //Admin signinup & login
 router.post('/admin/signin', signinValidation, adminController.signin);
