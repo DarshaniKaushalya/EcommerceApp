@@ -44,7 +44,7 @@ exports.addOrder = async (req, res) => {
                         const totalAmount = order.totalAmount;
                         const items = order.items;
 
-                        res.status(201).json({ order });
+                        res.status(201).json({ message: "Order Added Successfully" });
 
                         //order summary
                         const transport = nodemailer.createTransport({

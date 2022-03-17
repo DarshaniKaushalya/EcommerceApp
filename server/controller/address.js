@@ -34,7 +34,7 @@ exports.addAddress = async (req, res) => {
                 ).exec((error, address) => {
                     if (error) return res.status(400).json({ error });
                     if (address) {
-                        res.status(201).json({ address });
+                        res.status(201).json({ message: "Address Added Successfully" });
                     }
                 });
             }

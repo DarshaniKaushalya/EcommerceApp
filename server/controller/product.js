@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const cloudinary = require("../cloud/cloudinay");
-const upload = require("../middleware/multer");
+const upload = require("../middleware/multerMiddleware");
 const Product = require('../model/productModel');
 const res = require("express/lib/response");
 
@@ -21,7 +21,8 @@ exports.create = async (req, res, next) => {
         });
 
         await product.save();
-        res.json(product);
+        res.json({ message: "Product Added Successfully" });
+        // res.json(product);
     } catch (err) {
         console.log(err);
     }
@@ -73,7 +74,8 @@ exports.update = async (req, res, next) => {
             cloudinaryId: result.public_id || product.cloudinaryId,
         };
         product = await Product.findByIdAndUpdate(req.params.id, data, { new: true });
-        res.json(product);
+        res.json({ message: "Product updated Successfully" });
+        //res.json(product);
     } catch (err) {
         console.log(err);
     }
@@ -90,7 +92,7 @@ exports.delete = async (req, res) => {
         await cloudinary.uploader.destroy(product.cloudinaryId);
         //Delete product from db
         await product.remove();
-        res.json(product);
+        res.json({ message: "Product deleted Successfully" });
     } catch (err) {
         console.log(err);
     }
