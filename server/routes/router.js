@@ -3,11 +3,9 @@ const router = express.Router()
 const productionController = require('../controller/product');
 
 const { requireSignin, buyerMiddleware, adminMiddleware } = require('../middleware');
-
 //Validations
 const { signupValidation, signinValidation } = require('../middleware/validationMiddleware');
 
-const orderController = require('../controller/cart');
 const userController = require('../controller/user');
 const adminController = require('../controller/admin');
 const addressController = require('../controller/address');
@@ -15,19 +13,16 @@ const newOrderController = require('../controller/order');
 const updateOrderController = require('../controller/orderAdmin');
 const upload = require("../middleware/multer");
 
-//add to cart
-router.post('/cart', requireSignin, buyerMiddleware, orderController.create);
-//production routes
-const cartController = require('../controller/cart');
+/**
+ * Routes
+ */
 
+//production routes
 router.post('/products', upload.single("image"), productionController.create);
 router.get('/products', productionController.find);
 router.get('/products/:id', productionController.find);
 router.put('/products/:id', upload.single("image"), productionController.update);
 router.delete('/products/:id', productionController.delete);
-
-
-router.post('/cart', cartController.create);
 
 //Admin signinup & login
 router.post('/admin/signin', signinValidation, adminController.signin);
@@ -54,15 +49,5 @@ router.get('/buyer/orders', requireSignin, adminMiddleware, newOrderController.f
 router.get('/order/:id', requireSignin, adminMiddleware, newOrderController.findOrder);
 //admin order status update
 router.post('/order/status', requireSignin, adminMiddleware, updateOrderController.updateOrder);
-
-
-// router.post('/user', userController.create);
-router.post('/signin', userController.signin);
-router.post('/signup', userController.signup);
-
-// router.post('/profile', userController.requireSignin, (req, res) => {
-//     res.status(200).json({ user: 'profile' })
-// });
-
 
 module.exports = router;
