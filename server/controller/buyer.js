@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const cloudinary = require("../cloud/cloudinay");
-const upload = require("../middleware/multer");
+const upload = require("../middleware/multerMiddleware");
 const User = require('../model/userModel');
 const res = require("express/lib/response");
 const jwt = require('jsonwebtoken');
@@ -35,7 +35,6 @@ exports.signup = async (req, res) => {
                     }
                     if (data) {
                         return res.status(201).json({
-                            //user: data
                             message: 'User created Successfully'
                         })
                     }

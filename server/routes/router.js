@@ -10,7 +10,7 @@ const adminController = require('../controller/admin');
 const addressController = require('../controller/address');
 const newOrderController = require('../controller/order');
 const updateOrderController = require('../controller/orderAdmin');
-const upload = require("../middleware/multer");
+const upload = require("../middleware/multerMiddleware");
 
 /**
  * Routes
