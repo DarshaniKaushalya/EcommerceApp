@@ -1,5 +1,8 @@
 const joi = require("@hapi/joi");
 
+/**
+ * joi validations
+ */
 const validationSchema = {
     usersignup: joi.object({
         firstName: joi.string().max(10).min(3).required(),

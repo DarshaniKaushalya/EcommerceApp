@@ -1,6 +1,9 @@
 const { usersignup } = require("../validation/validation");
 const { usersignin } = require("../validation/validation");
 
+/**
+ * signupValidation
+ */
 module.exports = {
     signupValidation: async (req, res, next) => {
         const value = await usersignup.validateAsync(req.body);
@@ -14,6 +17,9 @@ module.exports = {
         }
     },
 
+    /**
+    * signinValidation
+    */
     signinValidation: async (req, res, next) => {
         const value = await usersignin.validateAsync(req.body);
         if (value.error) {

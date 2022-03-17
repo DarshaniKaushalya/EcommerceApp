@@ -1,8 +1,7 @@
 const multer = require("multer");
 const path = require("path");
 
-//Multer config
-// HOw about renaming this to FileUploader
+//Multer configurations || product image uploding
 module.exports = multer({
     storage: multer.diskStorage({
         destination: 'uploads',

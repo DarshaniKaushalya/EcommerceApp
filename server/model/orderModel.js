@@ -1,5 +1,8 @@
 const mongoose = require("mongoose");
 
+/**
+ * newOrderSchema
+ */
 const newOrderSchema = new mongoose.Schema(
     {
         user: {

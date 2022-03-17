@@ -5,6 +5,9 @@ const User = require('../model/userModel');
 const res = require("express/lib/response");
 const jwt = require('jsonwebtoken');
 
+/**
+ *Admin Signup
+ */
 exports.signup = async (req, res) => {
     try {
         await User.findOne({ email: req.body.email })
@@ -46,7 +49,9 @@ exports.signup = async (req, res) => {
         console.log(err);
     }
 };
-
+/**
+ *Admin Signin
+ */
 exports.signin = async (req, res) => {
     try {
         await User.findOne({ email: req.body.email })

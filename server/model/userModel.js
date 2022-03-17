@@ -1,6 +1,9 @@
 const mongoose = require('mongoose')
 const bcrypt = require('bcrypt')
 
+/**
+ * userSchema
+ */
 const userSchema = new mongoose.Schema({
     firstName: {
         type: String,
@@ -68,18 +71,4 @@ userSchema.methods = {
 }
 
 module.exports = mongoose.model("user", userSchema);
-
-
-// const userSchema = new mongoose.Schema({
-//     name: {
-//         type: String,
-//     }
-// }, { timestamps: true, versionKey: false });
-
-// userSchema.set('toJSON', {
-//     virtuals: true,
-//     transform: function (doc, ret) { delete ret._id }
-// });
-
-// module.exports = mongoose.model("user", userSchema);
 

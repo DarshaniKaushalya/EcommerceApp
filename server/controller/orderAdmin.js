@@ -1,5 +1,7 @@
 const Order = require("../model/orderModel");
-
+/**
+ *Update order status
+ */
 exports.updateOrder = async (req, res) => {
 
     try {
