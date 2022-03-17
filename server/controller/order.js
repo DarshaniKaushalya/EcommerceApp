@@ -162,7 +162,7 @@ exports.deleteOrder = async (req, res) => {
         let findorder = await findOrder.findById(req.params.id);
         //Delete product from db
         await findorder.remove();
-        res.json({ message: "Order Added Successfully" });
+        res.json({ message: "Order Deleted Successfully" });
     } catch (err) {
         console.log(err);
     }
