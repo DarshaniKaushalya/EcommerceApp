@@ -1,0 +1,401 @@
+<?php
+session_start(); 
+include("includes/connection.php");
+include("admin_area/functions/functions.php");
+?>
+
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>e-Learn</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="style/elearn_style.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+        integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
+    <!-----------Links------------------->
+    <link href="assets/img/1.png" rel="icon">
+    <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+    <link href="assets/css/style.css" rel="stylesheet">
+
+
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Montserrat:300,400,500,700"
+        rel="stylesheet">
+
+    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/vendor/icofont/icofont.min.css" rel="stylesheet">
+    <link href="assets/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="assets/vendor/ionicons/css/ionicons.min.css" rel="stylesheet">
+    <link href="assets/vendor/animate.css/animate.min.css" rel="stylesheet">
+    <link href="assets/vendor/venobox/venobox.css" rel="stylesheet">
+    <link href="assets/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+
+</head>
+
+<style>
+    body {
+        overflow-x: hidden;
+    }
+
+    .main-content {
+        width: 50%;
+        height: 40%;
+        margin: 10px auto;
+        background-color: #fff;
+        border: 2px solid #e6e6e6;
+        padding: 40px 50px;
+    }
+
+    .header {
+        border: 0px solid #000;
+        margin-bottom: 5px;
+    }
+
+    .well {
+        background-color: #187FAB;
+    }
+
+    #signin {
+        width: 60%;
+        border-radius: 30px;
+        color: #ffffff;
+        background-color: #03B277;
+    }
+
+    #signin:hover {
+        background-color: #33CA96;
+    }
+
+    .overlap-text {
+        position: relative;
+    }
+
+    .overlap-text a {
+        position: absolute;
+        top: 8px;
+        right: 10px;
+        font-size: 14px;
+        text-decoration: none;
+        font-family: 'Overpass Mono', monospace;
+        letter-spacing: -1px;
+
+    }
+
+    .well {
+        background-color: #222524;
+    }
+
+    #test {
+        text-decoration: none;
+    }
+</style>
+
+<body>
+
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="well" style="height: 80px;">
+                <!-- <center><h1 style="color: white;">EduZone</h1></center> -->
+
+                <!-- ======= Header ======= -->
+                <header id="header" class="fixed-top header-transparent">
+                    <div class="container-fluid">
+
+                        <div class="row justify-content-center">
+                            <div class="col-xl-11 d-flex align-items-center">
+                                <h1 class="logo mr-auto"><a href="index.html" id="test">EduZone</a></h1>
+                                <!-- Uncomment below if you prefer to use an image logo -->
+                                <!-- <a href="index.html" class="logo mr-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+
+                                <nav class="nav-menu d-none d-lg-block">
+                                    <ul>
+                                        <li class="active"><a href="">Fashion Store</a></li>
+                                        <li><a href="shop.php">Courses</a></li>
+                                        <li><a href="videoview/">Free Packages</a></li>
+                                        <li><a href="cart.php">Saved Courses</a></li>
+                                        <li><a href="services.php">Services</a></li>
+                                        <li><a href="profile.php">Profile</a></li>
+                                        <li><a href="cart.php" class="btn btn-primary navbar-btn rigth">
+                                                <i class="fa fa-heart" aria-hidden="true"></i>
+                                                <span>
+
+                                                </span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </nav><!-- .nav-menu -->
+
+
+                            </div>
+                        </div>
+
+                    </div>
+                </header><!-- End Header -->
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <!--Slider -->
+
+    <div class="container" id="Slider">
+        <div class="col-md-12">
+            <div class="carousel slide" id="myCarousel" data-ride="carousel">
+                <ol class="carousel-indicators">
+                    <li data-target="myCarousel" data-slide-to="0" class="action"></li>
+                    <li data-target="myCarousel" data-slide-to="1"></li>
+                    <li data-target="myCarousel" data-slide-to="2"></li>
+                    <li data-target="myCarousel" data-slide-to="3"></li>
+                </ol>
+                <div class="carousel-inner">
+                    <!--start-->
+                    <div class="item active">
+                        <img src="admin_area/slider_images/1.jpg">
+                    </div>
+                    <div class="item">
+                        <img src="admin_area/slider_images/2.jpg">
+                    </div>
+                    <div class="item">
+                        <img src="admin_area/slider_images/3.jpg">
+                    </div>
+                    <div class="item">
+                        <img src="admin_area/slider_images/4.jpg">
+                    </div>
+
+                </div>
+                <!--End-->
+                <a href="#myCarousel" class="left carousel-control" data-slide="prev">
+                    <span class="glyphicon glyphicon-chevron-left"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+
+                <a href="#myCarousel" class="right carousel-control" data-slide="next">
+                    <span class="glyphicon glyphicon-chevron-right"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+
+            </div>
+        </div>
+    </div>
+    <!--slider end-->
+
+    <br>
+    <div id="advantage">
+        <!--advantage box start-->
+        <div class="container">
+            <div class="same-height-row">
+                <div class="col-md-4">
+                    <!--col start-->
+                    <div class="box same-height">
+                        <div class="icon">
+                            <i class="fa fa-heart"></i>
+                        </div>
+                        <h3><a href="#">BEST PRICES</a></h3>
+                        <p>Check out our prices by comparing others</p>
+                    </div>
+                </div>
+                <!--col end-->
+
+                <div class="col-md-4">
+                    <!--col start-->
+                    <div class="box same-height">
+                        <div class="icon">
+                            <i class="fa fa-heart"></i>
+                        </div>
+                        <h3><a href="#">100% GURANTEEE FROM US</a></h3>
+                        <p>Best cources from us.</p>
+                    </div>
+                </div>
+                <!--col end-->
+
+                <div class="col-md-4">
+                    <!--col start-->
+                    <div class="box same-height">
+                        <div class="icon">
+                            <i class="fa fa-heart"></i>
+                        </div>
+                        <h3><a href="#">JOIN WITH US</a></h3>
+                        <p>We offer to you, a heigh demand cources</p>
+                    </div>
+                </div>
+                <!--col end-->
+
+
+            </div>
+        </div>
+
+    </div>
+    <!--advantage box end-->
+
+    <div id="hot">
+        <!--long bar start-->
+        <div class="box">
+            <div class="container">
+                <div class="col-md-12">
+                    <h2><b>Latest this Week</b></h2>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+    <!--long bar end-->
+
+    <div id="content" class="container">
+        <div class="row">
+
+            <?php
+        getPro();
+        
+      ?>
+
+
+        </div>
+    </div>
+
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <br>
+    <br>
+    <br>
+    <br>
+
+
+
+
+
+
+    <!-- ======= Footer ======= -->
+    <footer id="footer">
+        <div class="footer-top">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-lg-3 col-md-6 footer-info">
+                        <h3>EduZone</h3>
+                        <p>Cras fermentum odio eu feugiat lide par naso tierra. Justo eget nada terra videa magna derita
+                            valies darta donna mare fermentum iaculis eu non diam phasellus. Scelerisque felis imperdiet
+                            proin fermentum leo. Amet volutpat consequat mauris nunc congue.</p>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6 footer-links">
+                        <h4>Useful Links</h4>
+                        <ul>
+                            <li><i class="ion-ios-arrow-right"></i> <a href="#">Home</a></li>
+                            <li><i class="ion-ios-arrow-right"></i> <a href="#">About us</a></li>
+                            <li><i class="ion-ios-arrow-right"></i> <a href="#">Services</a></li>
+                            <li><i class="ion-ios-arrow-right"></i> <a href="#">Terms of service</a></li>
+                            <li><i class="ion-ios-arrow-right"></i> <a href="#">Privacy policy</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6 footer-contact">
+                        <h4>Contact Us</h4>
+                        <p>
+                            No 555 <br>
+                            Kandy Road, Kurunegala<br>
+                            Sri Lanka<br>
+                            <strong>Phone:</strong>+94778889999<br>
+                            <strong>Email:</strong> eduzone@gmail.com<br>
+                        </p>
+
+                        <div class="social-links">
+                            <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
+                            <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
+                            <a href="#" class="instagram"><i class="fa fa-instagram"></i></a>
+                            <a href="#" class="google-plus"><i class="fa fa-google-plus"></i></a>
+                            <a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a>
+                        </div>
+
+                    </div>
+
+                    <div class="col-lg-3 col-md-6 footer-newsletter">
+                        <h4>Our Newsletter</h4>
+                        <p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna veniam enim veniam
+                            illum dolore legam minim quorum culpa amet magna export quem marada parida nodela caramase
+                            seza.</p>
+                        <form action="" method="post">
+                            <input type="email" name="email"><input type="submit" value="Subscribe">
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="copyright">
+                &copy;<strong>EduZone</strong>
+            </div>
+            <div class="credits">
+                <!--
+       All the links in the footer should remain intact.
+       You can delete the links only if you purchased the pro version.
+       Licensing information: https://bootstrapmade.com/license/
+       Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=BizPage
+     -->
+                Designed by Kaushalya
+            </div>
+        </div>
+    </footer><!-- End Footer -->
+
+    <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+    <!-- Uncomment below i you want to use a preloader -->
+    <!-- <div id="preloader"></div> -->
+
+    <!-- Vendor JS Files -->
+    <script src="assets/vendor/jquery/jquery.min.js"></script>
+    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/vendor/jquery.easing/jquery.easing.min.js"></script>
+    <script src="assets/vendor/php-email-form/validate.js"></script>
+    <script src="assets/vendor/waypoints/jquery.waypoints.min.js"></script>
+    <script src="assets/vendor/counterup/counterup.min.js"></script>
+    <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+    <script src="assets/vendor/venobox/venobox.min.js"></script>
+    <script src="assets/vendor/owl.carousel/owl.carousel.min.js"></script>
+    <script src="assets/vendor/aos/aos.js"></script>
+
+    <!-- Template Main JS File -->
+    <script src="assets/js/main.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Cart</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="style/elearn_style.css">
+    <link rel="stylesheet" href="style/cart_style.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+        integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
+
+
+    <!--------links--->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+        integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <!-- Custom stylesheet -->
+    <link rel="stylesheet" href="style.css">
+
+
+    <!-------nav---------->
+    <link href="assets/img/1.png" rel="icon">
+    <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+    <link href="assets/css/style.css" rel="stylesheet">
+
+
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Montserrat:300,400,500,700"
+        rel="stylesheet">
+
+    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/vendor/icofont/icofont.min.css" rel="stylesheet">
+    <link href="assets/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="assets/vendor/ionicons/css/ionicons.min.css" rel="stylesheet">
+    <link href="assets/vendor/animate.css/animate.min.css" rel="stylesheet">
+    <link href="assets/vendor/venobox/venobox.css" rel="stylesheet">
+    <link href="assets/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <!----Nav End------>
+
+</head>
+</head>
+<style>
+    body {
+        overflow-x: hidden;
+    }
+
+    .main-content {
+        width: 50%;
+        height: 40%;
+        margin: 10px auto;
+        background-color: #fff;
+        border: 2px solid #e6e6e6;
+        padding: 40px 50px;
+    }
+
+    .header {
+        border: 0px solid #000;
+        margin-bottom: 5px;
+    }
+
+    .well {
+        background-color: #187FAB;
+    }
+
+    #signup {
+        width: 60%;
+        border-radius: 30px;
+        color: #ffffff;
+        background-color: #03B277;
+    }
+
+    #signup:hover {
+        background-color: #33CA96;
+    }
+
+    .well {
+        background-color: #222524;
+    }
+
+    #test {
+        text-decoration: none;
+    }
+</style>
+
+<body>
+
+
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="well" style="height: 80px;">
+                <!-- ======= Header ======= -->
+                <header id="header" class="fixed-top header-transparent">
+                    <div class="container-fluid">
+
+                        <div class="row justify-content-center">
+                            <div class="col-xl-11 d-flex align-items-center">
+                                <h1 class="logo mr-auto"><a href="index.html" id="test">DKFashion</a></h1>
+
+                                <nav class="nav-menu d-none d-lg-block">
+                                    <ul>
+
+                                        <li><a href="shop.html">Fashion Store</a></li>
+                                        <li class="active"><a href="cart.html">Cart</a></li>
+                                        <li><a href="profile.html">Profile</a></li>
+
+                                        </li>
+                                    </ul>
+                                </nav><!-- .nav-menu -->
+
+
+                            </div>
+                        </div>
+
+                    </div>
+                </header><!-- End Header -->
+
+            </div>
+        </div>
+    </div>
+
+
+    <div id="content">
+        <div class="container">
+            <!--start-->
+            <div class="col-md-12">
+                <ul class="breadcrumb">
+                    <li><a href="shop.html">Fashion Store</a></li>
+                    <li>Cart</li>
+                </ul>
+            </div>
+            <div class="col-md-9">
+                <div class="box" style="height: 1200px">
+                    <form action="cart.php" method="post" enctype="multipart-form-data">
+                        <h1>Shopping Cart</h1>
+
+                        <p class="text-muted">Currently You have
+                            3 item(s) in your cart
+                        </p>
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th colspan="2">Course</th>
+                                        <th>Category</th>
+                                        <th>Price</th>
+                                        <th colspan="1">Delete</th>
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- 1st -->
+                                    <tr>
+                                        <td><img src="admin_area/product_images/Tshirt3.jpg" height="50px" width="50px">
+                                        </td>
+                                        <td>
+                                            White TShirt
+                                        </td>
+
+                                        <td>
+                                            T-Shirts
+                                        </td>
+                                        <td>
+                                            Rs 5000
+                                        </td>
+
+                                        <td><input type="checkbox" name="remove[]" value="<?php echo $pro_id?>"></td>
+
+                                    </tr>
+                                    <!-- 2nd -->
+                                    <tr>
+                                        <td><img src="admin_area/product_images/Tshirt4.png" height="50px" width="50px">
+                                        </td>
+                                        <td>
+                                            White TShirt - Printed
+                                        </td>
+
+                                        <td>
+                                            T-Shirts
+                                        </td>
+                                        <td>
+                                            Rs 4000
+                                        </td>
+
+                                        <td><input type="checkbox" name="remove[]" value="<?php echo $pro_id?>"></td>
+
+                                    </tr>
+                                    <!-- 3rd -->
+                                    <tr>
+                                        <td><img src="admin_area/product_images/ShortFrock5.jpg" height="50px"
+                                                width="50px">
+                                        </td>
+                                        <td>
+                                            Long Frock - Beige Color
+                                        </td>
+
+                                        <td>
+                                            Long Frocks
+                                        </td>
+                                        <td>
+                                            Rs 4500
+                                        </td>
+
+                                        <td><input type="checkbox" name="remove[]" value="<?php echo $pro_id?>"></td>
+
+                                    </tr>
+                            </table>
+
+                        </div>
+                        <div class="box-footer">
+                            <div class="pull-left">
+                                <h4>Total Price</h4>
+                                <a href="shop.html" class="btn btn-default">
+                                    <i class="fa fa-chevron-left">Continue View Shop</i>
+                                </a>
+                            </div>
+                            <div class="pull-right">
+                                <h4>Rs 13500.00
+
+                                </h4>
+                                <button class="btn btn-default" type="submit" name="update" value="Update Cart">
+                                    <i class="fa fa-refresh">Update Cart</i>
+                                </button>
+
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="box" id="order-summary" style="height: 1200px">
+                    <div class="box-header">
+                        <h3>Product List Summary</h3>
+                    </div>
+                    <p class="text-muted">
+                        Shipping and additional costs are calculated based on the value you have entered
+
+                    </p>
+                    <hr>
+                    <table class="table-responsive">
+                        <tbody>
+                            <tr>
+                                <td>Order Subtotal</td>
+                                <th>
+                                    Rs 13500.00
+                                </th>
+
+                            </tr>
+                            <tr>
+                                <td>Shipping and Handling</td>
+                                <td>Rs 500.00</td>
+                            </tr>
+                            <tr>
+                                <td>Tax</td>
+                                <td>Rs 0.00</td>
+                            </tr>
+                            <tr class="total">
+                                <td>Total</td>
+                                <td>
+                                    Rs 14000.00
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <!--end-->
+    </div>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <!-- ======= Footer ======= -->
+    <footer id="footer">
+        <div class="footer-top">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-lg-3 col-md-6 footer-info">
+                        <h3 style="color: #fff;">DKFashion</h3>
+                        <p>Since 2004 Netgains has been building fashion e-commerce website & running effective fashion
+                            digital marketing campaigns for fast-growing as well as established fashion brands. Our
+                            expertise in fashion eCommerce ensures that your brand and products are delivered to your
+                            customers in a way that makes them buy. Get in touch today!</p>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6 footer-links">
+                        <h4>Useful Links</h4>
+                        <ul>
+                            <li><i class="ion-ios-arrow-right"></i> <a href="#">Home</a></li>
+                            <li><i class="ion-ios-arrow-right"></i> <a href="#">About us</a></li>
+                            <li><i class="ion-ios-arrow-right"></i> <a href="#">Services</a></li>
+                            <li><i class="ion-ios-arrow-right"></i> <a href="#">Terms of service</a></li>
+                            <li><i class="ion-ios-arrow-right"></i> <a href="#">Privacy policy</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6 footer-contact">
+                        <h4>Contact Us</h4>
+                        <p>
+                            No 555 <br>
+                            Kandy Road, Kurunegala<br>
+                            Sri Lanka<br>
+                            <strong>Phone:</strong>+94778889999<br>
+                            <strong>Email:</strong> dkfashion@gmail.com<br>
+                        </p>
+
+                        <div class="social-links">
+                            <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
+                            <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
+                            <a href="#" class="instagram"><i class="fa fa-instagram"></i></a>
+                            <a href="#" class="google-plus"><i class="fa fa-google-plus"></i></a>
+                            <a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a>
+                        </div>
+
+                    </div>
+
+                    <div class="col-lg-3 col-md-6 footer-newsletter">
+                        <h4>Our Newsletter</h4>
+                        <p>We will add new products in future . Keep in touch with us</p>
+                        <form action="" method="post">
+                            <input type="email" name="email"><input type="submit" value="Subscribe">
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="copyright">
+                &copy;<strong>DKFashion</strong>
+            </div>
+            <div class="credits">
+                Designed by Kaushalya
+            </div>
+        </div>
+    </footer><!-- End Footer -->
+
+    <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+
+    <!-- Vendor JS Files -->
+    <script src="assets/vendor/jquery/jquery.min.js"></script>
+    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/vendor/jquery.easing/jquery.easing.min.js"></script>
+    <script src="assets/vendor/php-email-form/validate.js"></script>
+    <script src="assets/vendor/waypoints/jquery.waypoints.min.js"></script>
+    <script src="assets/vendor/counterup/counterup.min.js"></script>
+    <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+    <script src="assets/vendor/venobox/venobox.min.js"></script>
+    <script src="assets/vendor/owl.carousel/owl.carousel.min.js"></script>
+    <script src="assets/vendor/aos/aos.js"></script>
+
+    <!-- Template Main JS File -->
+    <script src="assets/js/main.js"></script>
+
+</body>
+
+</html>
