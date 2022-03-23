@@ -12,6 +12,11 @@ const newOrderController = require('../controller/order');
 const updateOrderController = require('../controller/orderAdmin');
 const upload = require("../middleware/multerMiddleware");
 
+
+const services = require('../services/render');
+router.get('/', services.homeRoutes);
+router.get('/add/product', services.addProduct);
+
 /**
  * Routes
  */
@@ -21,7 +26,8 @@ router.post('/products', requireSignin, adminMiddleware, upload.single("image"),
 router.get('/products', productionController.find);
 router.get('/products/:id', productionController.find);
 router.put('/products/:id', requireSignin, adminMiddleware, upload.single("image"), productionController.update);
-router.delete('/products/:id', requireSignin, adminMiddleware, productionController.delete);
+// router.delete('/products/:id', requireSignin, adminMiddleware, productionController.delete);
+router.delete('/products/:id', productionController.delete);
 
 //Admin signinup & login
 router.post('/admin/signin', signinValidation, adminController.signin);
